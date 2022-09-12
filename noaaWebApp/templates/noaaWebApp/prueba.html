@@ -1,0 +1,14 @@
+{% extends 'noaaWebApp/home.html' %}
+
+{% block content %}
+    {% for sat_data in sat_data %}
+         <ul>
+         <li>Nombre Satelite: {{sat_data.satname}} </li>
+         <li>Id : {{sat_data.satId}}</li>
+         <li>Azimut Inicial: {{sat_data.startAz}}</li>
+         <li>Azimut Final : {{sat_data.endAz}}</li>
+         <li>Hora :{{sat_data.startUTC}}</li>
+         <li>Maxima Elevación :{{sat_data.maxEl}}</li>
+         </ul>
+    {% endfor %}
+{% endblock %}
