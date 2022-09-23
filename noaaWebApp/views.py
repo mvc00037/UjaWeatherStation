@@ -66,6 +66,4 @@ def prueba(request,idSat):
         sat_data.append(satResponse)
     context = {'sat_data': sat_data}
 
-
-
     return render(request, 'noaaWebApp/prueba.html', context)
