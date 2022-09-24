@@ -8,6 +8,7 @@ from .models import Satellite
 from pytz import timezone
 import datetime
 
+from rtlsdr import RtlSdr
 
 
 def home(request):
@@ -67,3 +68,15 @@ def prueba(request,idSat):
     context = {'sat_data': sat_data}
 
     return render(request, 'noaaWebApp/prueba.html', context)
+
+def sdr():
+
+    sdr = RtlSdr()
+
+    # configure device
+    sdr.sample_rate = 2.048e6  # Hz
+    sdr.center_freq = 70e6  # Hz
+    sdr.freq_correction = 60  # PPM
+    sdr.gain = 'auto'
+
+    print(sdr.read_samples(512))
