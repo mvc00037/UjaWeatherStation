@@ -1,9 +1,10 @@
 from django.contrib import admin
 from django.urls import path
-from noaaWebApp.views import home,prediction,prueba
+from noaaWebApp.views import home,prediction,prueba,predictionNoaa19
 
 urlpatterns = [
-    path('', prediction, name='prediction'),
+    path('', home, name='prediction'),
+    path('predictionNoaa19/', predictionNoaa19, name='prediction'),
     path('prueba/<str:idSat>', prueba, name='prueba'),
     path('admin/', admin.site.urls)
 ]

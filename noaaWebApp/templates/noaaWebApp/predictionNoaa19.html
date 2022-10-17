@@ -1,0 +1,20 @@
+{% extends 'noaaWebApp/predictionTable.html' %}
+
+{% block title %}  {{ sat_data.name }}  {% endblock %}
+
+{% block content2 %}
+        {% for sat_data in sat_data %}
+            {% ifchanged sat_data.satname %}
+                    <h1 class = 'text-center text-light mt-3'>{{ sat_data.satname }}</h1>
+            {% endifchanged %}
+            <table class="table table-sm table-dark ">
+              <tbody>
+                <tr>
+                  <td class="card-text">NoradId : {{sat_data.satId}}</td>
+                  <td class="card-text">Azimut Inicial: {{sat_data.startAz}}</td>
+                    <td class="card-text"> Azimut Final : {{sat_data.endAz}}</td>
+                    <td class="card-text">Hora :{{sat_data.startUTC}}</td>
+                    <td class="card-text">Maxima Elevación :{{sat_data.maxEl}} </td>
+                </tr>
+            </table>
+{% endfor %}
