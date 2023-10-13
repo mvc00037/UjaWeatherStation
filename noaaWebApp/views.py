@@ -1,4 +1,3 @@
-import zoneinfo
 
 import pytz
 from django.shortcuts import render
@@ -88,7 +87,6 @@ def prediccion(request,idSat ):
             "endUTC": r['passes'][i]['endUTC'],
             "maxEl": r['passes'][i]['maxEl'],
         }
-        #d = datetime.datetime(r['passes'][i]['startUTC'], tzinfo= zoneinfo.available_timezones('Etc/GMT+2)')
         sat_data.append(satResponse)
     sat = Satellite.objects.all()
     context = {'sat_data': sat_data, "sat": sat}
