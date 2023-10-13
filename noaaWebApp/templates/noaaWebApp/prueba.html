@@ -1,12 +1,21 @@
 
-{% extends 'noaaWebApp/home.html' %}
+{% extends 'noaaWebApp/base.html' %}
 
 {% block title %}  {{ sat_data.name }}  {% endblock %}
 
-{% block content2 %}
+    {%  block nav %}
+        {% for sat in  sat %}
+            <li class="nav-item">
+                <a class="nav-link" href = "{% url 'prueba' sat.noradId  %}">  {{ sat.name  }}  </a>
+            </li>
+        {% endfor %}
+    {% endblock %}
+
+{% block content %}
         {% for sat_data in sat_data %}
             {% ifchanged sat_data.satname %}
                     <h1 class = 'text-center text-light mt-3'>{{ sat_data.satname }}</h1>
+                <p> En la siquiente tabla vemos la previsión a diez dias de pases satelitates con elevación superior a 40º que pasan por la ubicacion de recepción. </p>
             {% endifchanged %}
             <table class="table table-sm table-dark ">
               <tbody>
@@ -19,10 +28,5 @@
                 </tr>
             </table>
 {% endfor %}
-
-
-
-
-
 
 {% endblock %}

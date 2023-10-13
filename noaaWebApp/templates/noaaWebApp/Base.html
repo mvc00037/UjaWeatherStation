@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+{#    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">#}
+   {% load static %}
+    <!-- Bootstrap -->
+    <script type="text/javascript" src="{% static 'noaaWebApp/vendor/jquery/jquery.min.js' %}"> </script>
+    <script src="{% static 'noaaWebApp/vendor/bootstrap/js/bootstrap.bundle.js' %}"> </script>
+    <link rel="stylesheet" href="{% static 'noaaWebApp/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'noaaWebApp/css/estilos.css' %}">
+    <title >Noaa web </title>
+</head>
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a class="navbar-brand " href="{% url 'home' %}">Inicio</a>
+        <a class="navbar-brand " href="{% url 'prediccion' 25338 %}">NOAA-15</a>
+        <a class="navbar-brand " href="{% url 'prediccion' 28654 %}">NOAA-18</a>
+        <a class="navbar-brand " href="{% url 'prediccion' 33591 %}">NOAA-19</a>
+    </div>
+  </div>
+</nav>
+
+
+<div class = "container text-center  bg-dark mt-5" >
+    <div class="card-body">
+        {%  block content %}
+            <p></p>
+        {%  endblock %}
+    </div>
+</div>
+
+</body>
+
+
+<footer class="bg-dark fixed-bottom text-white pt-5 pb-4 mt-5">
+  <div class="container text-center text-md-center">
+    <div class="row text-center text-md-left">
+        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+            <span class="footer-title">Proyecto realizado por Manuel Villar Campo</span>
+          </div>
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+            <span class="footer-title">Universidad de Jaen</span>
+          </div>
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+            <span class="footer-title">Escuela politecnica de Linares</span>
+          </div>
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+              <span>Ubicación del receptor </span>
+             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3195.920242526471!2d-3.75422672357198!3d36.77248076926067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd72277a322bc701%3A0x98b3ef5ffa6d61c3!2sEl%20Cerval%20Alto!5e0!3m2!1ses!2ses!4v1686394611650!5m2!1ses!2ses" width="350" height="150" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></iframe>
+          </div>
+    </div>
+  </div>
+</footer>
+
+</html>

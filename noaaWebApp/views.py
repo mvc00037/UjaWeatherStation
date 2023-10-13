@@ -4,16 +4,15 @@ import pytz
 from django.shortcuts import render
 from django.http import HttpResponse
 import requests
-from .models import Satellite
+from .models import Satellite,imagenApt
 from pytz import timezone
 import datetime
 
-
-
-
 def home(request):
+    imagenes = imagenApt.objects.all()
     sat = Satellite.objects.all()
-    return render(request,'noaaWebApp/home.html', {"sat": sat})
+    context=  { "imagenes":imagenes,"sat":sat}
+    return render(request,'noaaWebApp/home.html',context)
 
 def prediction(request):
 
@@ -70,8 +69,7 @@ def predictionNoaa19(request):
 
     return render(request,'noaaWebApp/prueba.html', context)
 
-
-def prueba(request,idSat):
+def prediccion(request,idSat ):
     sat_data = []
     url = 'https://api.n2yo.com/rest/v1/satellite/radiopasses/{}/36.76/-3.44/500/10/40/&apiKey=8LTCAG-YNFHC9-K96TEM-4WW6'
 
@@ -92,7 +90,8 @@ def prueba(request,idSat):
         }
         #d = datetime.datetime(r['passes'][i]['startUTC'], tzinfo= zoneinfo.available_timezones('Etc/GMT+2)')
         sat_data.append(satResponse)
-    context = {'sat_data': sat_data}
+    sat = Satellite.objects.all()
+    context = {'sat_data': sat_data, "sat": sat}
 
     return render(request, 'noaaWebApp/prueba.html', context)
 
